@@ -22,11 +22,13 @@ functions:
       OC_URL: ${ssm:/ifq_buddy/dev/oc/url}
       OC_USERNAME: ${ssm:/ifq_buddy/dev/oc/username}
       OC_PASSWORD: ${ssm:/ifq_buddy/dev/oc/password~true}
+      TELEGRAM_TOKEN: ${ssm:/ifq_buddy/dev/telegram/token}
+      TELEGRAM_CHAT_ID: ${ssm:/ifq_buddy/dev/telegram/chat_id}
 
     events:
       - schedule:
           name: ${self:service}-${opt:stage, self:provider.stage}-Sync
-          rate: cron(0 6 * * ? *)
+          rate: cron(0 5 * * ? *)
           enabled: true
 
 plugins:

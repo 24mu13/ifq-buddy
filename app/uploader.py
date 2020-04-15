@@ -17,5 +17,7 @@ class OwncloudUploader:
         self.client.login(OC_USERNAME, OC_PASSWORD)
         dest_file = OC_FILE_PATTERN.format(day=day)
         self.client.put_file(dest_file, source_file)
-        
+        link_info = self.client.share_file_with_link(dest_file)
         self.logger.info(f'File {dest_file} successfully uploaded')
+        
+        return link_info.get_link()       
